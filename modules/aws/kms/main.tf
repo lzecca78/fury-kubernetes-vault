@@ -1,9 +1,3 @@
-
-provider "aws" {
-  version = "~> 2.0"
-  region  = var.region
-}
-
 resource "aws_kms_key" "kms_k8s_vault" {
   description             = "KMS for Vault AutoSeal ${var.env}"
   deletion_window_in_days = 30
