@@ -69,6 +69,14 @@ vault-kv-helloworld:
 	vault secrets enable -path=secret/ kv
 	vault kv put secret/helloworld username=app password=changeme
 
+deploy-app:
+	kubectl apply -f demo/demo.yaml
+
+deploy-patch-basic:
+	kubectl patch deployment app -n demo --patch "$(cat demo/patches/patch-basic-annotations.yaml)"
+
+deploy-patch-template:
+	kubectl patch deployment app -n demo --patch "$(cat demo/patches/patch-template-annotations.yaml)"
 
 destroy:
 	kubectl delete -k . || exit 0
