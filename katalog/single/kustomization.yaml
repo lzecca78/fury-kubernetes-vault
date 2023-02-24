@@ -17,5 +17,5 @@ secretGenerator:
 
 images:
   - name: vault
-    newName: vault
-    newTag: 1.7.2
+    newName: registry.sighup.io/fury/vault/vault
+    newTag: 1.12.3

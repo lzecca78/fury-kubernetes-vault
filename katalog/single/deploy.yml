@@ -15,7 +15,7 @@ spec:
       labels:
         app: vault
     spec:
-      serviceAccount: vault
+      serviceAccountName: vault
       containers:
         - image: vault
           name: vault
