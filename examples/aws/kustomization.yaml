@@ -3,9 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: vault
 
-bases:
+resources:
   - vendor/katalog/vault/aws
-  - demo
+  - vendor/katalog/vault/sidecar-injector
 
 secretGenerator:
   - files:
@@ -13,3 +13,14 @@ secretGenerator:
       - config/backend.hcl
     behavior: merge
     name: vault
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: vault-injector
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/env/5/value
+        value: "http://vault.$(NAMESPACE).svc:8200"
