@@ -34,7 +34,7 @@ expose:
 	@echo execute "make demo-2" to initialize vault
 	kubectl port-forward -n vault svc/vault 8200:8200 &
 
-vault-init:
+vault-init: expose
 	VAULT_ADDR=http://127.0.0.1:8200 vault operator init
 	@echo
 	@echo TAKE NOTE OF THE GENERATED KEYS/TOKEN
