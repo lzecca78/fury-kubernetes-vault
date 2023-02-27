@@ -62,6 +62,10 @@ resource "aws_dynamodb_table" "vault-backend" {
     type = "S"
   }
 
+  point_in_time_recovery {
+    enabled = var.point_in_time_recovery_enabled
+  }
+
   tags = {
     Name        = "vault-backend"
     Environment = var.env

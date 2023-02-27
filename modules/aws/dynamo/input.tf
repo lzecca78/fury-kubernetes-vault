@@ -13,3 +13,11 @@ variable "write_capacity" {
 variable "read_capacity" {
   default = "10"
 }
+
+variable "point_in_time_recovery_enabled" {
+  default = false
+}
+
+variable "aws_backup" {
+    default = false
+}
